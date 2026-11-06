@@ -1,0 +1,29 @@
+<h1 class="text-3xl">Game of LiveView</h1>
+<svg
+  class="m-3"
+  viewBox="0 0 10 10"
+  xmlns="http://www.w3.org/2000/svg"
+  height="95vmin"
+  width="95vmin"
+>
+  <%= for x <- 0..9, y <- 0..9 do %>
+    <rect
+      x={x}
+      y={y}
+      width="1"
+      height="1"
+      stroke="silver"
+      stroke-width="0.1%"
+      fill="white"
+    />
+  <% end %>
+  <rect
+    x="0"
+    y="0"
+    width="10"
+    height="10"
+    stroke="black"
+    stroke-width="0.5%"
+    fill="none"
+  />
+</svg>
