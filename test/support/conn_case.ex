@@ -23,6 +23,7 @@ defmodule LifeWeb.ConnCase do
 
       import LifeWeb.ConnCase
       import Phoenix.ConnTest
+      import PhoenixTest
 
       # Import conveniences for testing with connections
       import Plug.Conn
@@ -33,6 +34,6 @@ defmodule LifeWeb.ConnCase do
   end
 
   setup _tags do
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    {:ok, conn: PhoenixTest.put_endpoint(Phoenix.ConnTest.build_conn(), LifeWeb.Endpoint)}
   end
 end

@@ -8,6 +8,7 @@
 >
   <%= for x <- 0..9, y <- 0..9 do %>
     <rect
+      id={"square-#{x}-#{y}"}
       x={x}
       y={y}
       width="1"
@@ -15,6 +16,9 @@
       stroke="silver"
       stroke-width="0.1%"
       fill="white"
+      phx-click="add-cell"
+      phx-value-x={x}
+      phx-value-y={y}
     />
   <% end %>
   <rect
@@ -25,5 +29,14 @@
     stroke="black"
     stroke-width="0.5%"
     fill="none"
+  />
+  <rect
+    :for={{x, y} <- @cells}
+    id={"cell-#{x}-#{y}"}
+    x={x}
+    y={y}
+    width="1"
+    height="1"
+    fill="black"
   />
 </svg>
