@@ -10,5 +10,14 @@ defmodule LifeWeb.LifeLiveTest do
       |> click_link("#cell-1-1", "")
       |> refute_has("#cell-1-1")
     end
+
+    test "allows the initial grid size to be changed", %{conn: conn} do
+      conn
+      |> visit("/")
+      |> assert_has("#square-9-9")
+      |> refute_has("#square-10-10")
+      |> fill_in("Size", with: "11")
+      |> assert_has("#square-10-10")
+    end
   end
 end
