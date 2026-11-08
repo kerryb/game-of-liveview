@@ -5,6 +5,21 @@ Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) on a canvas in a
 LiveView, with each living cell modelled by its own process (this would almost
 certainly be a terrible idea for a real application).
 
+```mermaid
+sequenceDiagram
+actor User
+participant LiveView
+User ->> LiveView: add cell 1,1
+create participant 1-1
+LiveView ->> 1-1: start_link
+User ->> LiveView: add cell 2,1
+create participant 2-1
+LiveView ->> 2-1: start_link
+User ->> LiveView: remove cell 1,1
+LiveView ->> 1-1: exit
+destroy 1-1
+```
+
 To start your Phoenix server:
 
 * Run `mix setup` to install and setup dependencies
