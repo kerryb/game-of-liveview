@@ -6,7 +6,7 @@ defmodule LifeWeb.LifeLive do
 
   @impl LiveView
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, size: 10, cells: [])}
+    {:ok, assign(socket, min_x: 0, min_y: 0, max_x: 9, max_y: 9, cells: [])}
   end
 
   @impl LiveView
@@ -19,6 +19,7 @@ defmodule LifeWeb.LifeLive do
   end
 
   def handle_event("resize", %{"size" => size}, socket) do
-    {:noreply, assign(socket, size: String.to_integer(size))}
+    size = String.to_integer(size)
+    {:noreply, assign(socket, max_x: size, max_y: size)}
   end
 end

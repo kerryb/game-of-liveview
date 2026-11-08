@@ -16,6 +16,7 @@ defmodule LifeWeb.LifeLiveTest do
       |> visit("/")
       |> assert_has("#square-9-9")
       |> refute_has("#square-10-10")
+      |> assert_has("input", label: "Size", value: "10")
       |> fill_in("Size", with: "11")
       |> assert_has("#square-10-10")
     end

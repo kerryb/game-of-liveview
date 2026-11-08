@@ -1,15 +1,22 @@
 <h1 class="text-3xl">Game of LiveView</h1>
 <form id="form" phx-change="resize">
-  <.input class="w-20 input" type="number" min="1" name="size" label="Size" value={@size} />
+  <.input
+    class="w-20 input"
+    type="number"
+    min="1"
+    name="size"
+    label="Size"
+    value={@max_x - @min_x + 1}
+  />
 </form>
 <svg
   class="m-3"
-  viewBox={"0 0 #{@size} #{@size}"}
+  viewBox={"0 0 #{@max_x - @min_x + 1} #{@max_y - @min_y + 1}"}
   xmlns="http://www.w3.org/2000/svg"
   height="90vmin"
   width="90vmin"
 >
-  <%= for x <- 0..(@size-1), y <- 0..(@size-1) do %>
+  <%= for x <- @min_x..@max_x, y <- @min_y..@max_y do %>
     <rect
       id={"square-#{x}-#{y}"}
       x={x}
@@ -27,8 +34,8 @@
   <rect
     x="0"
     y="0"
-    width={@size}
-    height={@size}
+    width={@max_x - @min_x + 1}
+    height={@max_y - @min_y + 1}
     stroke="black"
     stroke-width="0.5%"
     fill="none"
